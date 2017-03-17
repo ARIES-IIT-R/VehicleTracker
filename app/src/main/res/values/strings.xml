@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Vehicle Tracker</string>
+    <string name="textview">textview</string>
+    <string name="textview1">textview1</string>
+    <string name="speed">speed</string>
+    <string name="vehicle_no">vehicle_no</string>
+</resources>
