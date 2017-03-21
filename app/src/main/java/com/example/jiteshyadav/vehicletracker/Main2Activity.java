@@ -13,6 +13,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,11 +57,14 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
     double speed;
     TextView userName;
     TextView vehicleNo;
+    String Username;
+    String VehicleNo;
+    String message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_main2);
 
         userName = (TextView) findViewById(R.id.username);
         vehicleNo = (TextView) findViewById(R.id.vehicleno);
@@ -87,6 +91,7 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
             }
             // Toast.makeText(getApplicationContext(),"data read successful",Toast.LENGTH_SHORT).show();
             userName.setText(sb.toString());
+            Username = sb.toString();
         } catch (IOException e) {
             e.printStackTrace();
             // Toast.makeText(getApplicationContext(),"no data found",Toast.LENGTH_SHORT).show();
@@ -113,10 +118,11 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
             }
 
             vehicleNo.setText(sb1.toString());
+            VehicleNo = sb1.toString();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        message = "Overspeeding : "+Username+","+VehicleNo;
 
         int off = 0;
         try {
@@ -170,6 +176,11 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
             }
             lat_old = lat_new;
             lon_old = lon_new;
+
+            if (speed > 30)
+            {
+                sendSMS("7417618028",message);
+            }
         }
         @Override
         public void onProviderDisabled(String arg0) {}
@@ -352,6 +363,20 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
         }
     }
 
+    public void sendSMS(String phoneNo, String msg) {
+        try {
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(phoneNo, null, msg, null, null);
+            Toast.makeText(getApplicationContext(), "Message Sent",
+                    Toast.LENGTH_LONG).show();
+        } catch (Exception ex) {
+            Toast.makeText(getApplicationContext(),ex.getMessage().toString(),
+                    Toast.LENGTH_LONG).show();
+            ex.printStackTrace();
+        }
+    }
+
 
 }
+
 
