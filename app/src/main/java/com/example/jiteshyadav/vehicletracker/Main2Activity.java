@@ -179,7 +179,7 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
 
             if (speed > 30)
             {
-                sendSMS("7417618028",message);
+                sendSMS("9876543210",message);
             }
         }
         @Override
