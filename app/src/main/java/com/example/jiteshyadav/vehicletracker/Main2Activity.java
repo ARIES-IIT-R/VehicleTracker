@@ -39,7 +39,7 @@ import java.io.InputStreamReader;
 import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_NORMAL;
 
 
-public class SecondActivity extends FragmentActivity implements OnMapReadyCallback,
+public class Main2Activity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, LocationListener
 {
