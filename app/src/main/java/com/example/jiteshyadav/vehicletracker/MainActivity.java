@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences pref = getSharedPreferences("ActivityPREF", Context.MODE_PRIVATE);
         if(pref.getBoolean("activity_executed", false)){
-            Intent intent = new Intent(this, SecondActivity.class);
+            Intent intent = new Intent(this, Main2Activity.class);
             startActivity(intent);
             finish();
         } else {
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
 
-            Intent intent = new Intent(this, SecondActivity.class);
+            Intent intent = new Intent(this, Main2Activity.class);
             startActivityForResult(intent, 0);
         }
     }
