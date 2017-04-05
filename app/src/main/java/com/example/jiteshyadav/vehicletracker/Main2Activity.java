@@ -52,9 +52,9 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
     LocationRequest mLocationRequest;
     double lat_new;
     double lon_new;
-    double lat_old=0;
-    double lon_old=0;
-    double speed;
+    double lat_old=0.0;
+    double lon_old=0.0;
+    double speed = 0.0 ;
     TextView userName;
     TextView vehicleNo;
     String Username;
